@@ -57,3 +57,46 @@ accessibility, and content management are critical.
 1. Clone the repository:  
    ```bash
    git clone https://github.com/your-username/AudibleX.git
+
+2. Configure API Key: In your application.properties, add your OpenAI API key:
+   spring.ai.openai.api-key=YOUR_OPENAI_API_KEY
+   
+4. Build and Run the Application:
+   mvn clean install
+mvn spring-boot:run
+ The application should now be running on http://localhost:8080.
+
+---
+
+## Usage
+
+AudibleX provides a simple API endpoint to upload audio files and receive a transcription. Make a POST request to /api/transcribe with your audio file.
+
+Example Request
+curl -X POST -F "file=@path_to_audio_file.wav" http://localhost:8080/api/transcribe
+
+Example Response
+{
+  "transcription": "Your transcribed text here..."
+}
+
+---
+
+## API Endpoints
+- -POST /api/transcribe
+Description: Accepts an audio file and returns the transcribed text.
+Parameters:
+file (MultipartFile): The audio file to be transcribed.
+- Response:
+200 OK: JSON response with the transcription result.
+400 Bad Request: If the file format is unsupported or the request is invalid.
+
+---
+
+## Contributing
+
+Contributions are welcome! If you would like to enhance AudibleX.
+
+
+
+
